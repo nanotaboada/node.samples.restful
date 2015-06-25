@@ -1,3 +1,5 @@
+'use strict';
+
 var jwt = require('jwt-simple');
 
 var auth = {

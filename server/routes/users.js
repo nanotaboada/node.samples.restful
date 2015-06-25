@@ -1,7 +1,8 @@
+'use strict';
+
 var users = {
-    /**
-     * Basic implementation of CRUD operations
-     * */
+    
+     // INFO: Basic implementation of CRUD operations
     create: function(request, response) {
         var user = request.body;
         db.push(user);
@@ -37,22 +38,19 @@ var users = {
     }
 };
 
-/**
- * Simple stub for user data
- * */
-
+// INFO: Simple stub for user data
 var db = [{
     id: '1',
     name: { first: 'Paul', last: 'Cézanne' }
-}, {
+    }, {
     id: '2',
     name: { first: 'Camille', last: 'Pissarro' }
-}, {
+    }, {
     id: '3',
     name: { first: 'Pierre-Auguste', last: 'Renoir' }
-}, {
+    }, {
     id: '4',
     name: { first: 'Claude', last: 'Monet' }
-}];
+    }];
 
 module.exports = users;

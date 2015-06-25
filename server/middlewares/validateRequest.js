@@ -1,3 +1,5 @@
+'use strict';
+
 var jwt = require('jwt-simple'),
     validateUser = require('../routes/auth').checkUser;
 
