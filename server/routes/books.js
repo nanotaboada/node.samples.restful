@@ -64,7 +64,7 @@ var books = {
         var isbn = request.params.id;
         if(isbn) {
             response.json(db[isbn]);
-        };
+        }
     },
 
     retrieveAll: function(request, response) {

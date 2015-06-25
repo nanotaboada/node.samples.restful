@@ -28,7 +28,7 @@ var users = {
         var userId = request.params.id;
         if(userId) {
             response.json(db[userId]);
-        };
+        }
     },
 
     retrieveAll: function(request, response) {

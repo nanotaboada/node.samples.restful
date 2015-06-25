@@ -8,13 +8,8 @@ module.exports = function(request, response, next) {
      * INFO: When performing a cross-domain request, you will recieve
      * a preflighted request first. This is to check if our the app is safe
      */
-    var token = (request.body && request.body.access_token)
-        || (request.query && request.query.access_token)
-        || request.headers['x-access-token'];
-        
-    var key = (request.body && request.body.x_key)
-        || (request.query && request.query.x_key)
-        || request.headers['x-key'];
+    var token = (request.body && request.body.access_token) || (request.query && request.query.access_token) || request.headers['x-access-token'];
+    var key = (request.body && request.body.x_key) || (request.query && request.query.x_key) || request.headers['x-key'];
 
     if (token && key) {
         try {
