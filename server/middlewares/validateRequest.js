@@ -32,7 +32,7 @@ module.exports = function(request, response, next) {
                 // basically users with admin role can access admin API URLs, then
                 // users with any other role can access non-admin API URLs.
                 var hasAPIRole = user.role && request.url.indexOf('/api/v1') >= 0; 
-                var isAPIAdmin = user.role == 'admin' && request.url.indexOf('/api/v1/admin') >= 0;
+                var isAPIAdmin = user.role === 'admin' && request.url.indexOf('/api/v1/admin') >= 0;
                 
                 if (hasAPIRole || isAPIAdmin) {
                     // INFO: Move to next middleware

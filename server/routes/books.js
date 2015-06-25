@@ -1,43 +1,5 @@
 'use strict';
 
-var books = {
-    
-    // INFO: Basic implementation of CRUD operations
-    create: function(request, response) {
-        var book = request.body;
-        db.push(book);
-        response.json(book);
-    },
-
-    retrieve: function(request, response) {
-        var isbn = request.params.id;
-        if(isbn) {
-            response.json(db[isbn]);
-        };
-    },
-
-    retrieveAll: function(request, response) {
-        response.json(db);
-    },
-
-    update: function(request, response) {
-        var book = request.body;
-        var isbn = request.params.id;
-        if (book && isbn) {
-            db[isbn] = book;
-            response.json(book);   
-        }
-    },
-
-    delete: function(request, response) {
-        var isbn = request.params.id;
-        if (isbn) {
-            db.splice(isbn, 1);
-            response.json(true);            
-        }
-    }
-};
-
 // INFO: Simple stub for book data
 var db = [{
     isbn : '9781593272821',
@@ -88,5 +50,43 @@ var db = [{
     pages : 368,
     instock : true
 	}];
+
+var books = {
+    
+    // INFO: Basic implementation of CRUD operations
+    create: function(request, response) {
+        var book = request.body;
+        db.push(book);
+        response.json(book);
+    },
+
+    retrieve: function(request, response) {
+        var isbn = request.params.id;
+        if(isbn) {
+            response.json(db[isbn]);
+        };
+    },
+
+    retrieveAll: function(request, response) {
+        response.json(db);
+    },
+
+    update: function(request, response) {
+        var book = request.body;
+        var isbn = request.params.id;
+        if (book && isbn) {
+            db[isbn] = book;
+            response.json(book);   
+        }
+    },
+
+    delete: function(request, response) {
+        var isbn = request.params.id;
+        if (isbn) {
+            db.splice(isbn, 1);
+            response.json(true);            
+        }
+    }
+};
 
 module.exports = books;

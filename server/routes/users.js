@@ -1,5 +1,20 @@
 'use strict';
 
+// INFO: Simple stub for user data
+var db = [{
+    id: '1',
+    name: { first: 'Paul', last: 'Cézanne' }
+    }, {
+    id: '2',
+    name: { first: 'Camille', last: 'Pissarro' }
+    }, {
+    id: '3',
+    name: { first: 'Pierre-Auguste', last: 'Renoir' }
+    }, {
+    id: '4',
+    name: { first: 'Claude', last: 'Monet' }
+    }];
+
 var users = {
     
      // INFO: Basic implementation of CRUD operations
@@ -37,20 +52,5 @@ var users = {
         }
     }
 };
-
-// INFO: Simple stub for user data
-var db = [{
-    id: '1',
-    name: { first: 'Paul', last: 'Cézanne' }
-    }, {
-    id: '2',
-    name: { first: 'Camille', last: 'Pissarro' }
-    }, {
-    id: '3',
-    name: { first: 'Pierre-Auguste', last: 'Renoir' }
-    }, {
-    id: '4',
-    name: { first: 'Claude', last: 'Monet' }
-    }];
 
 module.exports = users;
