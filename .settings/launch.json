@@ -1,0 +1,28 @@
+{
+	"version": "0.1.0",
+	// List of configurations. Add new configurations or edit existing ones.  
+	// ONLY "node" and "mono" are supported, change "type" to switch.
+	"configurations": [
+		{
+			"name": "Launch",
+			"type": "node",
+			"program": "server/server.js",
+			"stopOnEntry": true,
+			"args": [],
+			"cwd": ".",
+			"runtimeExecutable": null,
+			"runtimeArguments": [],
+			"env": { },
+			"sourceMaps": false
+		}, 
+		{
+			"name": "Attach",
+			"type": "node",
+			// TCP/IP address. Default is "localhost".
+			"address": "localhost",
+			// Port to attach to.
+			"port": 5858,
+			"sourceMaps": false
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+    "name": "node.samples.restful",
+    "version": "1.0.0",
+    "description": "A secure RESTful Node.js sample project",
+    "main": "server/server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Nano Taboada <nanotaboada@msn.com>",
+    "license": "MIT",
+    "dependencies": {
+        "body-parser": "^1.8.3",
+        "express": "^4.9.4",
+        "jwt-simple": "^0.2.0",
+        "morgan": "^1.3.1"
+    }
+}
