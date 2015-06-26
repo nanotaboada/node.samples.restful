@@ -45,5 +45,11 @@ app.use(function(request, response, next) {
 app.set('port', process.env.PORT || 8888);
 
 var server = app.listen(app.get('port'), function() {
-    console.log('[RUNNING] Express server listening on port ' + server.address().port);
+    console.log('[STARTED] Express server listening on port ' + server.address().port);
+});
+
+process.on('SIGINT', function() {
+    console.log('[STOPPED] Express server listening on port ' + server.address().port);
+    server.close();
+    process.exit();
 });
