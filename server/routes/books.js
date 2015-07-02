@@ -1,7 +1,8 @@
 'use strict';
 
 // INFO: Simple stub for book data
-var db = [{
+
+/*  [{
     isbn : '9781593272821',
     title : 'Eloquent JavaScript',
     author : 'Marijn Haverbeke',
@@ -50,41 +51,60 @@ var db = [{
     pages : 368,
     instock : true
 	}];
+*/
+
+var low = require('lowdb');
+var db = low('books.json');
 
 var books = {
     
     // INFO: Basic implementation of CRUD operations
+    
     create: function(request, response) {
         var book = request.body;
-        db.push(book);
-        response.json(book);
+        if (book) {
+            db('books').push(book);
+            response.status(201).json(book);   
+        } else {
+            response.status(400).json({ 'status': 400, 'message': 'Bad Request' });
+        }
     },
 
     retrieve: function(request, response) {
-        var isbn = request.params.id;
-        if(isbn) {
-            response.json(db[isbn]);
+        var book = db('books').find( { isbn : request.params.id } );
+        if (book) {
+            response.status(200).json(book);
+        } else {
+            response.status(404).json({ 'status': 404, 'message': 'Not Found' });
         }
     },
 
     retrieveAll: function(request, response) {
-        response.json(db);
+            // TODO: Implement limit & offset
+            response.status(200).json(db('books').value());
     },
 
     update: function(request, response) {
-        var book = request.body;
-        var isbn = request.params.id;
-        if (book && isbn) {
-            db[isbn] = book;
-            response.json(book);   
+        var updated = request.body;
+        if (updated) {
+            var current = db('books').find( { isbn : request.params.id } );
+            if (current) {
+                db('books').chain().find({ isbn: current.isbn }).assign(updated).value();       
+            } else {
+                response.status(404).json({ 'status': 404, 'message': 'Not Found' });
+            }
+        } else {
+            response.status(400).json({ 'status': 400, 'message': 'Bad Request' });
         }
     },
 
     delete: function(request, response) {
-        var isbn = request.params.id;
-        if (isbn) {
-            db.splice(isbn, 1);
-            response.json(true);            
+        var book = db('books').find( { isbn : request.params.id } );
+        if (book) {
+            db('books').remove({ isbn : request.params.id });
+            response.status(200).json(true);
+        } else {
+            response.status(404).json({ 'status': 404, 'message': 'Not Found' });
         }
     }
 };
