@@ -1,29 +1,9 @@
 'use strict';
 
-// INFO: Simple stub for user data
-
-/*
-    [{
-    id: '1',
-    name: { first: 'Paul', last: 'Cézanne' }
-    }, {
-    id: '2',
-    name: { first: 'Camille', last: 'Pissarro' }
-    }, {
-    id: '3',
-    name: { first: 'Pierre-Auguste', last: 'Renoir' }
-    }, {
-    id: '4',
-    name: { first: 'Claude', last: 'Monet' }
-    }];
-*/
-
-var low = require('lowdb');
-var db = low('users.json');
+var low = require('lowdb'),
+    db = low('users.json');
 
 var users = {
-    
-    // INFO: Basic implementation of CRUD operations
     
     create: function(request, response) {
         var user = request.body;
