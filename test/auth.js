@@ -1,4 +1,6 @@
 /* global describe */
+/* global it */
+
 var should = require('should'),
     assert = require('assert'),
 	request = require('supertest'),
@@ -14,7 +16,7 @@ describe('Auth', function() {
 			.expect(404)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();;
       		});
 		});
 		it('when POST with neither email nor password then expect status 401', function(done) {
@@ -24,7 +26,7 @@ describe('Auth', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST with email but no password then expect status 401', function(done) {
@@ -36,7 +38,7 @@ describe('Auth', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST with password but no email then expect status 401', function(done) {
@@ -48,7 +50,7 @@ describe('Auth', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST with email and password then expect status 200', function(done) {
@@ -60,7 +62,20 @@ describe('Auth', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
+      		});
+		});
+		it('when POST is 200 then response should contain authorization token', function(done) {
+			var body = { email : 'foo@bar.baz', password : 'foobarbaz' };
+			request
+			.post('/login')
+			.send(body)
+			.expect(200)
+			.expect('Content-Type', contentType)
+			.end(function(error, response){
+				response.body.should.have.property('token')
+        		if (error) return done(error);
+        		done();
       		});
 		});
 	});

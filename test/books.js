@@ -1,4 +1,6 @@
 /* global describe */
+/* global it */
+
 var should = require('should'),
     assert = require('assert'),
 	request = require('supertest'),
@@ -18,7 +20,7 @@ describe('Books', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 	});
@@ -30,7 +32,7 @@ describe('Books', function() {
 			.expect(401)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when GET to invalid resource is not authenticated then expect status 401', function(done) {
@@ -40,7 +42,7 @@ describe('Books', function() {
 			.expect(401)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST to valid resource is not authenticated then expect status 401', function(done) {
@@ -52,7 +54,7 @@ describe('Books', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST to invalid resource is not authenticated then expect status 401', function(done) {
@@ -64,51 +66,51 @@ describe('Books', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when PUT to valid resource is not authenticated then expect status 401', function(done) {
 			var body = { isbn : valid };
 			request
-			.put('/api/v1/book' + valid)
+			.put('/api/v1/book/' + valid)
 			.send(body)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when PUT to invalid resource is not authenticated then expect status 401', function(done) {
 			var body = { isbn : valid };
 			request
-			.put('/api/v1/book' + invalid)
+			.put('/api/v1/book/' + invalid)
 			.send(body)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when DELETE to valid resource is not authenticated then expect status 401', function(done) {
 			request
-			.delete('/api/v1/book' + valid)
+			.delete('/api/v1/book/' + valid)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when DELETE to invalid resource is not authenticated then expect status 401', function(done) {
 			request
-			.delete('/api/v1/book' + valid)
+			.delete('/api/v1/book/' + valid)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 	});

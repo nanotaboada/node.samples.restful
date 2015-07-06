@@ -1,4 +1,6 @@
 /* global describe */
+/* global it */
+
 var should = require('should'),
     assert = require('assert'),
 	request = require('supertest'),
@@ -17,7 +19,7 @@ describe('Users', function() {
 			.expect(401)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 	});
@@ -29,7 +31,7 @@ describe('Users', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when GET to invalid resource is not authenticated then expect status 401', function(done) {
@@ -39,7 +41,7 @@ describe('Users', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST to valid resource is not authenticated then expect status 401', function(done) {
@@ -51,7 +53,7 @@ describe('Users', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when POST to invalid resource is not authenticated then expect status 401', function(done) {
@@ -63,51 +65,51 @@ describe('Users', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when PUT to valid resource is not authenticated then expect status 401', function(done) {
 			var body = { id : valid };
 			request
-			.put('/api/v1/user' + valid)
+			.put('/api/v1/user/' + valid)
 			.send(body)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when PUT to invalid resource is not authenticated then expect status 401', function(done) {
 			var body = { id : valid };
 			request
-			.put('/api/v1/user' + invalid)
+			.put('/api/v1/user/' + invalid)
 			.send(body)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when DELETE to valid resource is not authenticated then expect status 401', function(done) {
 			request
-			.delete('/api/v1/user' + valid)
+			.delete('/api/v1/user/' + valid)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 		it('when DELETE to invalid resource is not authenticated then expect status 401', function(done) {
 			request
-			.delete('/api/v1/user' + valid)
+			.delete('/api/v1/user/' + valid)
 			.expect(401)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
-        		done()
+        		done();
       		});
 		});
 	});
