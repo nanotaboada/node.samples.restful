@@ -3,14 +3,14 @@ var should = require('should'),
     assert = require('assert'),
 	request = require('supertest'),
 	url = 'http://node-samples-restful.herokuapp.com/',
-	valid = '9781449331818',
+	valid = 1,
 	invalid = 'foobarbaz';
 	
-describe('Books', function() {
-	describe('/books', function() {
+describe('Users', function() {
+	describe('/users', function() {
 		it('should be HTTP 401 when HTTP GET to all resources is not authenticated.', function(done) {
 			request(url)
-			.get('/api/v1/books')
+			.get('/api/v1/users')
 			.end(function (error, response){
 				if (error) {
 				    throw error;
@@ -20,10 +20,10 @@ describe('Books', function() {
 		    done();
 		});
 	});
-	describe('/book', function() {
+	describe('/user', function() {
 		it('should be HTTP 401 when HTTP GET to valid resource is not authenticated.', function(done) {
 			request(url)
-			.get('/api/v1/book/' + valid)
+			.get('/api/v1/user/' + valid)
 			.end(function (error, response){
 				if (error) {
 				    throw error;
@@ -34,7 +34,7 @@ describe('Books', function() {
 		});
 		it('should be HTTP 401 when HTTP GET to invalid resource is not authenticated.', function(done) {
 			request(url)
-			.get('/api/v1/book/' + invalid)
+			.get('/api/v1/user/' + invalid)
 			.end(function (error, response){
 				if (error) {
 				    throw error;
@@ -46,7 +46,7 @@ describe('Books', function() {
 		it('should be HTTP 401 when HTTP POST is not authenticated.', function(done) {
 			var body = { isbn : valid };
 			request(url)
-			.post('/api/v1/book/')
+			.post('/api/v1/user/')
 			.send(body)
 			.end(function (error, response){
 				if (error) {
@@ -59,7 +59,7 @@ describe('Books', function() {
 		it('should be HTTP 401 when HTTP PUT is not authenticated.', function(done) {
 			var body = { isbn : valid };
 			request(url)
-			.put('/api/v1/book/' + valid)
+			.put('/api/v1/user/' + valid)
 			.send(body)
 			.end(function (error, response){
 				if (error) {
@@ -71,7 +71,7 @@ describe('Books', function() {
 		});
 		it('should be HTTP 401 when HTTP DELETE is not authenticated.', function(done) {
 			request(url)
-			.delete('/api/v1/book/' + valid)
+			.delete('/api/v1/user/' + valid)
 			.end(function (error, response){
 				if (error) {
 				    throw error;

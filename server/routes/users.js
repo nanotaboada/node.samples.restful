@@ -16,7 +16,7 @@ var users = {
     },
 
     retrieve: function(request, response) {
-        var user = db('users').find( { isbn : request.params.id } );
+        var user = db('users').find( { id : request.params.id } );
         if (user) {
             response.status(200).json(user);
         } else {
@@ -32,9 +32,9 @@ var users = {
     update: function(request, response) {
         var updated = request.body;
         if (updated) {
-            var current = db('users').find( { isbn : request.params.id } );
+            var current = db('users').find( { id : request.params.id } );
             if (current) {
-                db('users').chain().find({ isbn: current.isbn }).assign(updated).value();       
+                db('users').chain().find({ id: current.id }).assign(updated).value();       
             } else {
                 response.status(404).json({ 'status': 404, 'message': 'Not Found' });
             }
@@ -44,9 +44,9 @@ var users = {
     },
 
     delete: function(request, response) {
-        var user = db('users').find( { isbn : request.params.id } );
+        var user = db('users').find( { id : request.params.id } );
         if (user) {
-            db('users').remove({ isbn : request.params.id });
+            db('users').remove({ id : request.params.id });
             response.status(200).json(true);
         } else {
             response.status(404).json({ 'status': 404, 'message': 'Not Found' });
