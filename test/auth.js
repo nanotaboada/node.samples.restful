@@ -2,12 +2,13 @@
 var should = require('should'),
     assert = require('assert'),
 	request = require('supertest'),
+	contentType = 'application/json; charset=utf-8';
 
 request = request('http://node-samples-restful.herokuapp.com');
 
 describe('Auth', function() {
 	describe('/login', function() {
-		it('should be HTTP 404 when HTTP GET.', function(done) {
+		it('when GET then expect status 404', function(done) {
 			request
 			.get('/login')
 			.expect(404)
@@ -16,43 +17,47 @@ describe('Auth', function() {
         		done()
       		});
 		});
-		it('should be HTTP 401 when HTTP POST with neither email nor password.', function(done) {
+		it('when POST with neither email nor password then expect status 401', function(done) {
 			request
 			.post('/login')
 			.expect(401)
+			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
         		done()
       		});
 		});
-		it('should be HTTP 401 when HTTP POST with email but no password.', function(done) {
+		it('when POST with email but no password then expect status 401', function(done) {
 			var body = { email : 'foo@bar.baz' };
 			request
 			.post('/login')
 			.send(body)
 			.expect(401)
+			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
         		done()
       		});
 		});
-		it('should be HTTP 401 when HTTP POST with password but no email.', function(done) {
+		it('when POST with password but no email then expect status 401', function(done) {
 			var body = { password : 'foobarbaz' };
 			request
 			.post('/login')
 			.send(body)
 			.expect(401)
+			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
         		done()
       		});
 		});
-		it('should be HTTP 200 when HTTP POST with password and email.', function(done) {
+		it('when POST with email and password then expect status 200', function(done) {
 			var body = { email : 'foo@bar.baz', password : 'foobarbaz' };
 			request
 			.post('/login')
 			.send(body)
 			.expect(200)
+			.expect('Content-Type', contentType)
 			.end(function(error, response){
         		if (error) return done(error);
         		done()
