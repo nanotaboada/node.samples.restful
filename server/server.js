@@ -34,13 +34,6 @@ app.all('/*', function(request, response, next) {
 app.all('/api/v1/*', [require('./middlewares/validateRequest')]);
 app.use('/', require('./routes'));
 
-// If no route is matched by now we must return 404
-app.use(function(request, response, next) {
-    var error = new Error('Not Found');
-    error.status = 404;
-    next(error);
-});
-
 /** 
  * Application server
  */

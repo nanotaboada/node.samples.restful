@@ -1,64 +1,37 @@
 {
     "books": [
         {
-            "isbn" : "978-1593272821",
-            "title" : "Eloquent JavaScript",
-            "author" : "Marijn Haverbeke",
-            "published" : "2011-02-03T00:00:00.000Z",
-            "publisher" : "No Starch Press",
-            "pages" : 224,
-            "description" : "\"A concise and balanced mix of principles and pragmatics. I loved the tutorial-style game-like program development. This book rekindled my earliest joys of programming. Plus, JavaScript!\" —Brendan Eich, creator of JavaScript",
-            "instock" : true
-        },
-        {
-            "isbn" : "978-0596805524",
-            "title" : "JavaScript: The Definitive Guide, 6th Edition",
-            "author" : "David Flanagan",
-            "published" : "2011-05-10T00:00:00.000Z",
+            "isbn" : "9781449331818",
+            "title" : "Learning JavaScript Design Patterns",
+            "subtitle" : "A JavaScript and jQuery Developer's Guide",
+            "author" : "Addy Osmani",
+            "published" : "2012-07-01T00:00:00.000Z",
             "publisher" : "O'Reilly Media",
-            "pages" : 1100,
-            "description" : "Since 1996, JavaScript: The Definitive Guide has been the bible for JavaScript programmers. With more than 500,000 copies in print, web developers are still raving about it.",
-            "instock" : true
+            "pages" : 254,
+            "description" : "With Learning JavaScript Design Patterns, youâ€™ll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you.",
+            "website" : "http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/"
         },
         {
-            "isbn" : "978-1430247494",
-            "title" : "Pro JavaScript Performance: Monitoring and Visualization",
-            "author" : "Tom Barker",
-            "published" : "2012-10-31T00:00:00.000Z",
-            "publisher" : "Apress",
-            "pages" : 220,
-            "description" : "Performance is a hugely important area of web development. If your site runs slowly, users are going to leave, and the problem only grows as your site gets more popular. Pro JavaScript Performance gives you the tools you need to keep your sites smooth and responsive no matter how many users you have.",
-            "instock" : true
-        },
-        {
-            "isbn" : "978-0596806750",
-            "title" : "JavaScript Patterns",
-            "author" : "Stoyan Stefanov",
-            "published" : "2010-09-28T00:00:00.000Z",
+            "isbn" : "9781449365035",
+            "title" : "Speaking JavaScript",
+            "subtitle" : "An In-Depth Guide for Programmers",
+            "author" : "Axel Rauschmayer",
+            "published" : "2014-02-01T00:00:00.000Z",
             "publisher" : "O'Reilly Media",
-            "pages" : 236,
-            "description" : "What's the best approach for developing an application with JavaScript? This book helps you answer that question with numerous JavaScript coding patterns and best practices. If you're an experienced developer looking to solve problems related to objects, functions, inheritance, and other language-specific categories, the abstractions and code templates in this guide are ideal -- whether you're writing a client-side, server-side, or desktop application with JavaScript.",
-            "instock" : true
+            "pages" : 460,
+            "description" : "Like it or not, JavaScript is everywhere these daysâ€”from browser to server to mobileâ€”and now you, too, need to learn the language or dive deeper than you have. This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.",
+            "website" : "http://speakingjs.com/"
         },
         {
-            "isbn" : "978-0321822086",
-            "title" : "jQuery, jQuery UI, and jQuery Mobile: Recipes and Examples",
-            "author" : "Adriaan de Jonge",
-            "published" : "2012-11-12T00:00:00.000Z",
-            "publisher" : "Addison-Wesley Professional",
-            "pages" : 400,
-            "description" : "100+ Practical jQuery Recipes for Solving Your Real-World Web and Mobile Development Challenges!",
-            "instock" : true
-        },
-        {
-            "isbn" : "978-0672336058",
-            "title" : "Windows 8 Apps with HTML5 and JavaScript Unleashed",
-            "author" : "Stephen Walther",
-            "published" : "2012-11-30T00:00:00.000Z",
-            "publisher" : "Sams Publishing",
-            "pages" : 368,
-            "description" : "Already comfortable with JavaScript and HTML? Microsoft has just empowered you to build breakthrough apps for Windows 8. It’s a remarkable opportunity--and best-selling Microsoft web development author Stephen Walther will show you how to take full advantage of it.",
-            "instock" : true
-       }
+            "isbn" : "9781491950296",
+            "title" : "Programming JavaScript Applications",
+            "subtitle" : "Robust Web Architecture with Node, HTML5, and Modern JS Libraries",
+            "author" : "Eric Elliott",
+            "published" : "2014-07-01T00:00:00.000Z",
+            "publisher" : "O'Reilly Media",
+            "pages" : 254,
+            "description" : "Take advantage of JavaScriptâ€™s power to build robust web-scale or enterprise applications that are easy to extend and maintain. By applying the design patterns outlined in this practical book, experienced JavaScript developers will learn how to write flexible and resilient code thatâ€™s easierâ€”yes, easierâ€”to work with as your code base grows.",
+            "website" : "http://chimera.labs.oreilly.com/books/1234000000262/index.html"
+        }
     ]
 }
