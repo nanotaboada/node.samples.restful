@@ -1,6 +1,7 @@
 /* global describe */
 /* global it */
 /* global before */
+'use strict';
 
 var should = require('should'),
     assert = require('assert'),
@@ -23,10 +24,9 @@ describe('Books', function() {
 		.send(body)
 		.end(function(error, response){
 			accessToken = response.body.token;
-			// console.log(accessToken);
 		});
 	});
-	describe('/api/v1/books', function() {
+    describe('/api/v1/books', function() {
 		it('when GET with neither X-Key nor X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.get('/api/v1/books')
@@ -39,8 +39,6 @@ describe('Books', function() {
         		done();
       		});
 		});
-	});
-	describe('/api/v1/books', function() {
 		it('when GET with X-Key but no X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.get('/api/v1/books')
@@ -54,9 +52,7 @@ describe('Books', function() {
         		done();
       		});
 		});
-	});
-	describe('/api/v1/books', function() {
-		it('when HTTP GET with X-Access-Token but no X-Key then expect a Status of 401 Unauthorized', function(done) {
+		it('when GET with X-Access-Token but no X-Key then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.get('/api/v1/books')
 			.set('X-Access-Token', accessToken)
@@ -69,8 +65,6 @@ describe('Books', function() {
         		done();
       		});
 		});
-	});
-	describe('/api/v1/books', function() {
 		it('when GET with X-Access-Token and X-Key then expect a Status of 200 OK', function(done) {
 			request
 			.get('/api/v1/books')

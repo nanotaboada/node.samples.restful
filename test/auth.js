@@ -1,5 +1,6 @@
 /* global describe */
 /* global it */
+'use strict';
 
 var should = require('should'),
     assert = require('assert'),
@@ -84,7 +85,9 @@ describe('Auth', function() {
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
 				response.body.should.have.property('token')
-        		if (error) return done(error);
+        		if (error) {
+					return done(error)
+				};
         		done();
       		});
 		});
