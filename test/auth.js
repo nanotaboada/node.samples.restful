@@ -19,7 +19,7 @@ describe('Auth', function() {
         		if (error) {
 					return done(error)
 				};
-        		done();;
+        		done();
       		});
 		});
 		it('when POST with neither email nor password then expect a Status of 401 Unauthorized', function(done) {

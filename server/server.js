@@ -3,14 +3,15 @@
 
 var express = require('express'),
     app = express(),
-    path = require('path'),
-    logger = require('morgan'),
+    // path = require('path'),
+    // morgan = require('morgan'),
     bodyParser = require('body-parser'),
     compression = require('compression');
 
-app.use(logger('dev'));
+// app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(compression({ threshold: false }));
+
 
 app.all('/*', function(request, response, next) {
     // INFO: Instead of "*" it can be restricted to a specific domain

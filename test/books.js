@@ -73,14 +73,15 @@ describe('Books', function() {
 			.expect(200)
 			.expect('Content-Type', contentType)
 			.end(function(error, response){
-				response.body.should.be.an.Array();
         		if (error) {
 					return done(error)
 				};
         		done();
+				response.body.should.have.properties(['isbn']);
       		});
 		});
 	});
+
 	describe('/api/v1/book', function() {
 		it('when GET to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
