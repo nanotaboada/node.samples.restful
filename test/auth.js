@@ -10,6 +10,7 @@ var should = require('should'),
 request = request('http://node-samples-restful.herokuapp.com');
 
 describe('Auth', function() {
+	this.timeout(4000); // 4 seconds
 	describe('/login', function() {
 		it('when GET then expect a Status of 404 Not Found', function(done) {
 			request

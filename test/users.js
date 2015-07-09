@@ -17,6 +17,7 @@ var should = require('should'),
 request = request('http://node-samples-restful.herokuapp.com');
 
 describe('Users', function() {
+	this.timeout(4000); // 4 seconds
 	before(function() {
 		var body = { email : email, password : password };
 		request
@@ -26,7 +27,7 @@ describe('Users', function() {
 			accessToken = response.body.token;
 		});
 	});
-	describe('/api/v1/user', function() {
+	describe('/api/v1/users', function() {
 		it('when GET with neither X-Key nor X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.get('/api/v1/users')
@@ -119,7 +120,7 @@ describe('Users', function() {
         		done();
       		});
 		});
-		it('when PUT to a valid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when PUT to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			var body = { id : validResource };
 			request
 			.put('/api/v1/user/' + validResource)
@@ -133,7 +134,7 @@ describe('Users', function() {
         		done();
       		});
 		});
-		it('when PUT to an invalid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when PUT to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			var body = { id : validResource };
 			request
 			.put('/api/v1/user/' + invalidResource)
@@ -147,7 +148,7 @@ describe('Users', function() {
         		done();
       		});
 		});
-		it('when DELETE to a valid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when DELETE to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.delete('/api/v1/user/' + validResource)
 			.expect(401)
@@ -159,7 +160,7 @@ describe('Users', function() {
         		done();
       		});
 		});
-		it('when DELETE to an invalid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when DELETE to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.delete('/api/v1/user/' + validResource)
 			.expect(401)

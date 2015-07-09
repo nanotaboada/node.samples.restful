@@ -1,7 +1,7 @@
 {
   "name": "node.samples.restful",
-  "version": "1.0.0",
-  "description": "A secure RESTful Node.js sample project",
+  "version": "1.1.0",
+  "description": "Sample project for a secure ReSTful API made with Node.js",
   "main": "server/server.js",
   "repository": {
     "type": "git",

@@ -17,6 +17,7 @@ var should = require('should'),
 request = request('http://node-samples-restful.herokuapp.com');
 
 describe('Books', function() {
+	this.timeout(4000); // 4 seconds
 	before(function() {
 		var body = { email : email, password : password };
 		request
@@ -135,7 +136,7 @@ describe('Books', function() {
         		done();
       		});
 		});
-		it('when PUT to a valid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when PUT to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			var body = { isbn : validResource };
 			request
 			.put('/api/v1/book/' + validResource)
@@ -149,7 +150,7 @@ describe('Books', function() {
         		done();
       		});
 		});
-		it('when PUT to an invalid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when PUT to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			var body = { isbn : validResource };
 			request
 			.put('/api/v1/book/' + invalidResource)
@@ -163,7 +164,7 @@ describe('Books', function() {
         		done();
       		});
 		});
-		it('when DELETE to a valid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when DELETE to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.delete('/api/v1/book/' + validResource)
 			.expect(401)
@@ -175,7 +176,7 @@ describe('Books', function() {
         		done();
       		});
 		});
-		it('when DELETE to an invalid resource but no no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
+		it('when DELETE to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.delete('/api/v1/book/' + validResource)
 			.expect(401)
