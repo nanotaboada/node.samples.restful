@@ -21,11 +21,7 @@ var auth = {
 
         if (!email || !password) {
             response.status(401);
-            response.json(
-                { 
-                    'status': 401,
-                    'message': 'Unauthorized.' + ' (email: ' + email + ', password: ' + password + ')'
-                });
+            response.json({ status : 401, message : 'Unauthorized.' });
             return;
         }
 
@@ -33,7 +29,7 @@ var auth = {
 
         if (!user) {
             response.status(401);
-            response.json({ 'status': 401, 'message': 'Unauthorized' });
+            response.json({ status : 401,  message : 'Unauthorized' });
             return;
         } else {
             response.json(generateToken(user));

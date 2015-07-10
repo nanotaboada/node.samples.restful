@@ -18,7 +18,7 @@ module.exports = function(request, response, next) {
             if (decoded.exp <= Date.now()) {
                 // Token expired
                 response.status(400);
-                response.json({ 'status': 400, 'message': 'Bad Request' });
+                response.json({ status : 400, message : 'Bad Request' });
                 return;
             }
             var user = validateUser(key);
@@ -34,12 +34,12 @@ module.exports = function(request, response, next) {
                     next();
                 } else {
                     response.status(403);
-                    response.json({ 'status': 403, 'message': 'Forbidden' });
+                    response.json({ status : 403, message : 'Forbidden' });
                     return;
                 }
             } else {
                 response.status(401);
-                response.json({ 'status': 401, 'message': 'Unauthorized' });
+                response.json({ status : 401, message : 'Unauthorized' });
                 return;
             }
 

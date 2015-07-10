@@ -11,7 +11,7 @@ var users = {
             db('users').push(user);
             response.status(201).json(user);   
         } else {
-            response.status(400).json({ 'status': 400, 'message': 'Bad Request' });
+            response.status(400).json({ status : 400, message : 'Bad Request' });
         }
     },
 
@@ -20,7 +20,7 @@ var users = {
         if (user) {
             response.status(200).json(user);
         } else {
-            response.status(404).json({ 'status': 404, 'message': 'Not Found' });
+            response.status(404).json({ status : 404, message : 'Not Found' });
         }
     },
 
@@ -36,10 +36,10 @@ var users = {
             if (current) {
                 db('users').chain().find({ id: current.id }).assign(updated).value();       
             } else {
-                response.status(404).json({ 'status': 404, 'message': 'Not Found' });
+                response.status(404).json({ status : 404, message : 'Not Found' });
             }
         } else {
-            response.status(400).json({ 'status': 400, 'message': 'Bad Request' });
+            response.status(400).json({ status : 400, message : 'Bad Request' });
         }
     },
 
@@ -49,7 +49,7 @@ var users = {
             db('users').remove({ id : request.params.id });
             response.status(200).json(true);
         } else {
-            response.status(404).json({ 'status': 404, 'message': 'Not Found' });
+            response.status(404).json({ status : 404, message : 'Not Found' });
         }
     }
 };

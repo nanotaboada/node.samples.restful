@@ -2,117 +2,78 @@
 /* global it */
 'use strict';
 
-var should = require('should'),
-    assert = require('assert'),
-	request = require('supertest'),
-	contentType = 'application/json; charset=utf-8';
+var request = require('supertest'),
+	CONTENT_TYPE = 'application/json; charset=utf-8',
+	ENDPOINT = 'http://node-samples-restful.herokuapp.com',
+	EMAIL = 'nanotaboada@msn.com',
+	PASSWORD = 'p455w0rd',
+	RESPONSE_BODY_UNAUTHORIZED = { status : 401, message : 'Unauthorized.' },
+	TIMEOUT_IN_MILISECONDS = 10000; // 10 seconds
+;
 
-request = request('http://node-samples-restful.herokuapp.com');
+function hasAuthorizationToken(response) {
+	if (response.body.token) {
+		return true;
+	}
+};
+
+request = request(ENDPOINT);
 
 describe('Auth', function() {
-	this.timeout(4000); // 4 seconds
+	this.timeout(TIMEOUT_IN_MILISECONDS);
 	describe('/login', function() {
 		it('when GET then expect a Status of 404 Not Found', function(done) {
 			request
 			.get('/login')
-			.expect(404)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();
-      		});
+			.expect(404, done);
 		});
 		it('when POST with neither email nor password then expect a Status of 401 Unauthorized', function(done) {
 			request
 			.post('/login')
-			.expect(401)
-			.expect('Content-Type', contentType)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();
-      		});
+			.expect('Content-Type', CONTENT_TYPE)
+			.expect(RESPONSE_BODY_UNAUTHORIZED)
+			.expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
 		});
 		it('when POST with email but no password then expect a Status of 401 Unauthorized', function(done) {
-			var body = { email : 'foo@bar.baz' };
 			request
 			.post('/login')
-			.send(body)
-			.expect(401)
-			.expect('Content-Type', contentType)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();
-      		});
+			.send({ email : EMAIL })
+			.expect('Content-Type', CONTENT_TYPE)
+			.expect(RESPONSE_BODY_UNAUTHORIZED)
+			.expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
 		});
 		it('when POST with password but no email expect a Status of 401 Unauthorized', function(done) {
-			var body = { password : 'foobarbaz' };
 			request
 			.post('/login')
-			.send(body)
-			.expect(401)
-			.expect('Content-Type', contentType)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();
-      		});
+			.send({ password : PASSWORD })
+			.expect('Content-Type', CONTENT_TYPE)
+			.expect(RESPONSE_BODY_UNAUTHORIZED)
+			.expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
 		});
 		it('when POST with email and password then expect a Status of 200 OK', function(done) {
-			var body = { email : 'foo@bar.baz', password : 'foobarbaz' };
 			request
 			.post('/login')
-			.send(body)
-			.expect(200)
-			.expect('Content-Type', contentType)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();
-      		});
+			.send({email: EMAIL, password: PASSWORD})
+			.expect('Content-Type', CONTENT_TYPE)
+			.expect(200, done);
 		});
 		it('when POST response is 200 OK then it should contain authorization token', function(done) {
-			var body = { email : 'foo@bar.baz', password : 'foobarbaz' };
 			request
 			.post('/login')
-			.send(body)
-			.expect(200)
-			.expect('Content-Type', contentType)
-			.end(function(error, response){
-				response.body.should.have.property('token')
-        		if (error) {
-					return done(error)
-				};
-        		done();
-      		});
+			.send({email: EMAIL, password: PASSWORD})
+			.expect('Content-Type', CONTENT_TYPE)
+			.expect(hasAuthorizationToken)
+			.expect(200, done);
 		});
 		it('when PUT then expect a Status of 404 Not Found', function(done) {
 			request
 			.put('/login')
-			.expect(404)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();;
-      		});
+			.expect(404, done);
 		});
 		it('when DELETE then expect a Status of 404 Not Found', function(done) {
 			request
 			.delete('/login')
-			.expect(404)
-			.end(function(error, response){
-        		if (error) {
-					return done(error)
-				};
-        		done();;
-      		});
+			.expect(404, done);
 		});
 	});
 });
