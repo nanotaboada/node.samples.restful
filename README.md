@@ -1,6 +1,10 @@
 Status
 ------
-[ ![Codeship Status for nanotaboada/node.samples.restful](https://codeship.com/projects/d37a64c0-820e-0132-8766-02cef419759e/status?branch=master)](https://codeship.com/projects/57739) [![Codacy Badge](https://www.codacy.com/project/badge/8a53f27ab85e4fbe91c34de834d16e3a)](https://www.codacy.com/app/nanotaboada/node-samples-restful) [![Code Climate](https://codeclimate.com/github/nanotaboada/node.samples.restful/badges/gpa.svg)](https://codeclimate.com/github/nanotaboada/node.samples.restful)
+[![Codeship Status for nanotaboada/node.samples.restful](https://codeship.com/projects/d37a64c0-820e-0132-8766-02cef419759e/status?branch=master)](https://codeship.com/projects/57739)
+
+[![Dependency Status](https://david-dm.org/nanotaboada/node.samples.restful.svg)](https://david-dm.org/nanotaboada/node.samples.restful)
+[![devDependency Status](https://david-dm.org/nanotaboada/node.samples.restful/dev-status.svg)](https://david-dm.org/nanotaboada/node.samples.restful#info=devDependencies)
+[![Codacy Badge](https://www.codacy.com/project/badge/8a53f27ab85e4fbe91c34de834d16e3a)](https://www.codacy.com/app/nanotaboada/node-samples-restful) [![Code Climate](https://codeclimate.com/github/nanotaboada/node.samples.restful/badges/gpa.svg)](https://codeclimate.com/github/nanotaboada/node.samples.restful)
 
 Manifesto
 ---------
