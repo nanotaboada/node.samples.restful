@@ -1,6 +1,6 @@
 {
   "name": "node.samples.restful",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Sample project for a secure ReSTful API made with Node.js",
   "main": "server/server.js",
   "repository": {
@@ -13,17 +13,19 @@
   "author": "Nano Taboada <nanotaboada@msn.com>",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.8.3",
-    "compression": "^1.5.0",
-    "express": "^4.9.4",
-    "jwt-simple": "^0.3.0",
-    "lowdb": "^0.10.1"
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "jwt-simple": "^0.5.0",
+    "lowdb": "^0.13.1"
   },
   "devDependencies": {
-    "mocha": "^2.2.5",
-    "gulp": "^3.9.0",
-    "gulp-jshint": "^1.11.2",
-    "gulp-mocha": "^2.1.3",
-    "supertest": "^1.0.1"
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-mocha": "^3.0.0",
+    "jshint": "^2.9.2",
+    "lodash": "^4.14.2",
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
   }
 }
