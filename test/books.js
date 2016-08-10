@@ -3,7 +3,7 @@
 var request = require("supertest");
 var xAccessToken,
     X_KEY = "nanotaboada@msn.com",
-    ENDPOINT = "http://node-samples-restful.herokuapp.com",
+    ENDPOINT = "http://localhost:8888",
     TIMEOUT_IN_MILISECONDS = 10000, // 10 seconds
     CONTENT_TYPE = "application/json; charset=utf-8",
     REQUEST_BODY_EMAIL_PASSWORD = { email: "nanotaboada@msn.com", password: "p455w0rd" },
@@ -34,6 +34,7 @@ var xAccessToken,
 request = request(ENDPOINT);
 
 describe("Books", function () {
+
     this.timeout(TIMEOUT_IN_MILISECONDS);
     before(function () {
         request
@@ -43,15 +44,18 @@ describe("Books", function () {
             xAccessToken = response.body.token;
         });
     });
+    
     describe("/api/v1/books", function () {
-        it("when GET with neither X-Key nor X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+
+        it("When GET with neither X-Key nor X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .get("/api/v1/books")
             .expect("Content-Type", CONTENT_TYPE)
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when GET with X-Key but no X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When GET with X-Key but no X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .get("/api/v1/books")
             .set("X-Key", X_KEY)
@@ -59,7 +63,8 @@ describe("Books", function () {
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when GET with X-Access-Token but no X-Key then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When GET with X-Access-Token but no X-Key, then expect a Status of 401 Unauthorized", function (done) {
             request
             .get("/api/v1/books")
             .set("X-Access-Token", xAccessToken)
@@ -67,31 +72,27 @@ describe("Books", function () {
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when GET with X-Access-Token and X-Key then expect a Status of 200 OK", function (done) {
-              request
-              .get("/api/v1/books")
-              .set("X-Access-Token", xAccessToken)
-              .set("X-Key", X_KEY)
-              .expect("Content-Type", CONTENT_TYPE)
-              .expect(200, done);
-        });
     });
+    
     describe("/api/v1/book", function () {
-        it("when GET to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+
+        it("When GET to a valid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .get("/api/v1/book/" + VALID_RESOURCE.isbn)
             .expect("Content-Type", CONTENT_TYPE)
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when GET to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When GET to an invalid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .get("/api/v1/book/" + INVALID_RESOURCE.isbn)
             .expect("Content-Type", CONTENT_TYPE)
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when POST to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When POST to a valid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             var body = { isbn: VALID_RESOURCE.isbn };
             request
             .post("/api/v1/book")
@@ -100,7 +101,8 @@ describe("Books", function () {
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when POST to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When POST to an invalid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .post("/api/v1/book")
             .send(INVALID_RESOURCE)
@@ -108,7 +110,8 @@ describe("Books", function () {
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when PUT to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When PUT to a valid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .put("/api/v1/book/" + VALID_RESOURCE)
             .send(VALID_RESOURCE)
@@ -116,7 +119,8 @@ describe("Books", function () {
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when PUT to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When PUT to an invalid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .put("/api/v1/book/" + INVALID_RESOURCE)
             .send(INVALID_RESOURCE)
@@ -124,14 +128,16 @@ describe("Books", function () {
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when DELETE to a valid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When DELETE to a valid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .delete("/api/v1/book/" + VALID_RESOURCE.isbn)
             .expect("Content-Type", CONTENT_TYPE)
             .expect(RESPONSE_BODY_UNAUTHORIZED)
             .expect(RESPONSE_BODY_UNAUTHORIZED.status, done);
         });
-        it("when DELETE to an invalid resource but no X-Key/X-Access-Token then expect a Status of 401 Unauthorized", function (done) {
+        
+        it("When DELETE to an invalid resource but no X-Key/X-Access-Token, then expect a Status of 401 Unauthorized", function (done) {
             request
             .delete("/api/v1/book/" + INVALID_RESOURCE.isbn)
             .expect("Content-Type", CONTENT_TYPE)

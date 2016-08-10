@@ -1,31 +1,33 @@
 {
-  "name": "node.samples.restful",
-  "version": "1.1.1",
-  "description": "Sample project for a secure ReSTful API made with Node.js",
-  "main": "server/server.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nanotaboada/node.samples.restful"
-  },
-  "scripts": {
-    "test": "make test"
-  },
-  "author": "Nano Taboada <nanotaboada@msn.com>",
-  "license": "MIT",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "compression": "^1.6.2",
-    "express": "^4.14.0",
-    "jwt-simple": "^0.5.0",
-    "lowdb": "^0.13.1"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-jshint": "^2.0.1",
-    "gulp-mocha": "^3.0.0",
-    "jshint": "^2.9.2",
-    "lodash": "^4.14.2",
-    "mocha": "^3.0.2",
-    "supertest": "^2.0.0"
-  }
+    "name": "node.samples.restful",
+    "version": "1.1.1",
+    "description": "Sample project for a secure ReSTful API made with Node.js",
+    "main": "server/server.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nanotaboada/node.samples.restful"
+    },
+    "scripts": {
+        "test": "make test",
+        "start": "node server/server.js"
+    },
+    "author": "Nano Taboada <nanotaboada@msn.com>",
+    "license": "MIT",
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "compression": "^1.6.2",
+        "express": "^4.14.0",
+        "jwt-simple": "^0.5.0",
+        "lowdb": "^0.13.1"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-jshint": "^2.0.1",
+        "gulp-mocha": "^3.0.0",
+        "gulp-run": "^1.7.1",
+        "jshint": "^2.9.2",
+        "lodash": "^4.14.2",
+        "mocha": "^3.0.2",
+        "supertest": "^2.0.0"
+    }
 }
