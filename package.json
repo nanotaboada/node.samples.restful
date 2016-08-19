@@ -1,0 +1,42 @@
+{
+  "name": "node.samples.restful.tdd",
+  "version": "1.0.0",
+  "description": "Proof of Concept for a RESTFul API made with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.7.1",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "lodash": "^4.15.0",
+    "lowdb": "^0.13.1",
+    "method-override": "^2.3.6",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-mocha": "^3.0.1",
+    "jshint": "^2.9.3",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5",
+    "sinon-mongoose": "^1.2.1",
+    "supertest": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanotaboada/node.samples.restful.tdd.git"
+  },
+  "author": "Nano Taboada <nanotaboada@msn.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nanotaboada/node.samples.restful.tdd/issues"
+  },
+  "homepage": "https://github.com/nanotaboada/node.samples.restful.tdd#readme"
+}
