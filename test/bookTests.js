@@ -97,15 +97,15 @@ describe("Book", function () {
             .get("/api/v1/book/" + VALID_RESOURCE.isbn)
             .end(function (error, response) {
                 expect(response.body).to.be.an("object");
-                expect(response.body).to.have.property('isbn');
-                expect(response.body).to.have.property('title');
-                expect(response.body).to.have.property('subtitle');
-                expect(response.body).to.have.property('author');
-                expect(response.body).to.have.property('publisher');
-                expect(response.body).to.have.property('published');
-                expect(response.body).to.have.property('pages');
-                expect(response.body).to.have.property('description');
-                expect(response.body).to.have.property('website');
+                expect(response.body).to.have.property("isbn");
+                expect(response.body).to.have.property("title");
+                expect(response.body).to.have.property("subtitle");
+                expect(response.body).to.have.property("author");
+                expect(response.body).to.have.property("publisher");
+                expect(response.body).to.have.property("published");
+                expect(response.body).to.have.property("pages");
+                expect(response.body).to.have.property("description");
+                expect(response.body).to.have.property("website");
                 done();
             });
         });
