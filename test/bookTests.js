@@ -32,6 +32,41 @@ var CONTENT_TYPE = "application/json",
 
 describe("Book", function () {
     
+    describe("POST /api/v1/book/", function () {
+        
+        it("Response Content-Type should be \"application/json\"", function (done) {
+            request
+            .post("/api/v1/book/")
+            .end(function (error, response) {
+                expect(response.header["content-type"]).to.contain(CONTENT_TYPE);
+                done();
+            });
+        });
+ 
+        it("When request body is null or empty, then response Status Code should be 400 Bad Request", function(done) {
+            var body = null;
+            request
+            .post("/api/v1/book/")
+            .send(body)
+            .end(function (error, response) {
+                expect(400);
+                done();
+            });
+        });
+        
+        it("When request has valid Book, then response Status Code should be 201 Created", function(done) {
+            var body = VALID_RESOURCE;
+            request
+            .post("/api/v1/book/")
+            .send(body)
+            .end(function (error, response) {
+                expect(201);
+                done();
+            });
+        });
+        
+    });
+    
     describe("GET /api/v1/books", function () {
 
         it("Response Content-Type should be \"application/json\"", function (done) {

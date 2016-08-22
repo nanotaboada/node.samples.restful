@@ -6,7 +6,7 @@
 			"type": "node",
 			"program": "/home/hernan/src/nanotaboada/node.samples.restful.tdd/node_modules/mocha/bin/_mocha",
 			"stopOnEntry": false,
-			"args": ["tests/bookTests.js"],
+			"args": ["test/bookTests.js"],
 			"cwd": "${workspaceRoot}",
 			"runtimeExecutable": null,
 			"env": { "NODE_ENV": "production"}

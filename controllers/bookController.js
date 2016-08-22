@@ -13,8 +13,8 @@ var bookController = {
     post: function (request, response) {
         "use strict";
         var book = request.body;
-        if (book) {
-            // TODO
+        if (book.isbn) {
+            bookModel.create(book);
             response.status(201).json(book);
         } else {
             response.status(400).json({ status: 400, message: "Bad Request" });
