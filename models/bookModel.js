@@ -10,7 +10,7 @@ db.defaults({ books: require(__dirname + "/books.js") }).value();
 var bookModel = {
     
     create: function (book) {
-        // TODO
+        return db.get("books").push(book).value();
     },
 
     read: function (isbn) {
