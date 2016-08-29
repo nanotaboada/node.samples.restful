@@ -21,12 +21,12 @@ var bookModel = {
         return db.get("books").value();
     },
     
-    update: function () {
-        // TODO
+    update: function (updated, existing) {
+        db.get("books").chain().find({ isbn: existing.isbn }).assign(updated).value();
     },
     
-    delete: function () {
-        // TODO
+    delete: function (isbn) {
+        db.get("books").remove({ isbn: isbn }).value();
     }
     
 };

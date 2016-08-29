@@ -14,8 +14,13 @@ var bookController = {
         "use strict";
         var book = request.body;
         if (book.isbn) {
-            bookModel.create(book);
-            response.status(201).json(book);
+            var existing = bookModel.read(book.isbn);
+            if (existing) {
+                response.status(409).json({ status: 409, message: "Conflict" });
+            } else {
+                bookModel.create(book);
+                response.status(201).json(book);
+            }
         } else {
             response.status(400).json({ status: 400, message: "Bad Request" });
         }
@@ -53,13 +58,13 @@ var bookController = {
      */
     put: function (request, response) {
         "use strict";
-        var current,
+        var isbn = request.params.id,
             updated = request.body;
-        if (updated) {
-            // TODO
-            current = null;
-            if (current) {
-                // TODO
+        if (isbn && updated.isbn) {
+            var existing = bookModel.read(isbn);
+            if (existing.isbn) {
+                bookModel.update(updated, existing);
+                response.status(200).json(updated);
             } else {
                 response.status(404).json({ status: 404, message: "Not Found" });
             }
@@ -73,13 +78,12 @@ var bookController = {
      */
     delete: function (request, response) {
         "use strict";
-        // TODO
-        var book = null;
-        if (book) {
-            // TODO
+        var isbn = request.params.id;
+        if (isbn) {
+            bookModel.delete(isbn);
             response.status(200).json(true);
         } else {
-            response.status(404).json({ status: 404, message: "Not Found" });
+            response.status(400).json({ status: 400, message: "Bad Request" });
         }
     }
 };

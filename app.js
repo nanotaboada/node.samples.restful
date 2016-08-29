@@ -7,7 +7,6 @@
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var express = require('express');
-var favicon = require('serve-favicon');
 var path = require('path');
 
 var app = express();
@@ -34,14 +33,14 @@ app.use(function(request, response, next) {
 
 // Development
 if (app.get('env') === 'development') {
-    app.use(function(error, request, response, next) {
+    app.use(function(error, request, response) {
         response.status(error.status || 500);
         response.json( { message: error.message, error: error } );
     });
 }
 
 // Production
-app.use(function(error, request, response, next) {
+app.use(function(error, request, response) {
     response.status(error.status || 500);
     response.json( { message: error.message, error: {} } );
 });
