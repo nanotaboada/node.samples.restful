@@ -3,8 +3,14 @@
 // TODO: Dependency Injection in Node.js
 // https://blog.risingstack.com/dependency-injection-in-node-js/
 
+// https://github.com/typicode/lowdb
 var low = require("lowdb");
-var db = low(__dirname + "/books.db", { storage: require("lowdb/lib/file-async") });
+
+// persisted using async file storage
+// var db = low(__dirname + "/books.db", { storage: require("lowdb/lib/file-async") });
+
+// in-memory
+var db = low();
 db.defaults({ books: require(__dirname + "/books.js") }).value();
 
 var bookModel = {
