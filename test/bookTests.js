@@ -26,11 +26,11 @@ var INVALID_BOOK = {
         website: "http://chimera.labs.oreilly.com/books/1234000000262/index.html"
     },
     VALID_BOOK_UPDATED_DESCRIPTION = "JavaScript may be the most essential web programming language, but in the real world, JavaScript applications often break when you make changes. With this book, author Eric Elliott shows you how to add client- and server-side features to a large JavaScript application without negatively affecting the rest of your code.";
-    
+
 describe("Book", function () {
-    
+
     describe("POST /api/v1/book", function () {
-        
+
         it("When request URL is valid, then response Content Type should be \"application/json\"", function (done) {
             request
             .post("/api/v1/book/")
@@ -39,7 +39,7 @@ describe("Book", function () {
                 done();
             });
         });
- 
+
         it("When no request payload, then response Status Code should be 400 Bad Request", function(done) {
             var body = [];
             request
@@ -50,7 +50,7 @@ describe("Book", function () {
                 done();
             });
         });
-        
+
         it("When request payload is valid Book, then response Status Code should be 201 Created", function(done) {
             var body = VALID_BOOK;
             request
@@ -61,7 +61,7 @@ describe("Book", function () {
                 done();
             });
         });
-        
+
         it("When request payload is valid but existing Book, then response Status Code should be 409 Conflict", function(done) {
             var body = VALID_BOOK;
             request
@@ -74,7 +74,7 @@ describe("Book", function () {
         });
 
     });
-    
+
     describe("GET /api/v1/books", function () {
 
         it("When request URL is valid, then response Content Type should be \"application/json\"", function (done) {
@@ -104,27 +104,9 @@ describe("Book", function () {
             });
         });
     });
-    
-    
+
+
     describe("GET /api/v1/book/:id", function () {
-        
-        it("When request URL has valid ISBN, then response Content Type should be \"application/json\"", function (done) {
-            request
-            .get("/api/v1/book/" + VALID_BOOK.isbn)
-            .end(function (error, response) {
-                expect(response.header["content-type"]).to.contain("application/json");
-                done();
-            });
-        });
- 
-       it("When request URL has valid ISBN, then response Status Code should be 200 OK", function(done) {
-            request
-            .get("/api/v1/book/" + VALID_BOOK.isbn)
-            .end(function (error, response) {
-                expect(response.status).to.equal(200);
-                done();
-            });
-        });
 
         it("When request URL has invalid ISBN, then response Status Code should be 404 Not Found", function(done) {
             request
@@ -134,7 +116,25 @@ describe("Book", function () {
                 done();
             });
         });
-        
+
+       it("When request URL has valid ISBN, then response Status Code should be 200 OK", function(done) {
+            request
+            .get("/api/v1/book/" + VALID_BOOK.isbn)
+            .end(function (error, response) {
+                expect(response.status).to.equal(200);
+                done();
+            });
+        });
+
+        it("When request URL has valid ISBN, then response Content Type should be \"application/json\"", function (done) {
+            request
+            .get("/api/v1/book/" + VALID_BOOK.isbn)
+            .end(function (error, response) {
+                expect(response.header["content-type"]).to.contain("application/json");
+                done();
+            });
+        });
+
        it("When request URL has valid ISBN, then response payload should be a Book", function(done) {
             request
             .get("/api/v1/book/" + VALID_BOOK.isbn)
@@ -152,11 +152,22 @@ describe("Book", function () {
                 done();
             });
         });
-        
+
     });
 
     describe("PUT /api/v1/book/:id", function () {
-        
+
+        it("When request URL has invalid ISBN, then response Status Code should be 404 Not Found", function(done) {
+            var body = VALID_BOOK;
+            request
+            .put("/api/v1/book/" + INVALID_BOOK.isbn)
+            .send(body)
+            .end(function (error, response) {
+                expect(response.status).to.equal(404);
+                done();
+            });
+        });
+
         it("When request URL has valid ISBN, then response Content Type should be \"application/json\"", function (done) {
             request
             .put("/api/v1/book/" + VALID_BOOK.isbn)
@@ -165,7 +176,7 @@ describe("Book", function () {
                 done();
             });
         });
- 
+
         it("When no request payload, then response Status Code should be 400 Bad Request", function(done) {
             var body = [];
             request
@@ -176,7 +187,7 @@ describe("Book", function () {
                 done();
             });
         });
-        
+
         it("When request payload is valid Book, then response Status Code should be 200 OK", function(done) {
             var body = VALID_BOOK;
             body.description = VALID_BOOK_UPDATED_DESCRIPTION;
@@ -188,11 +199,11 @@ describe("Book", function () {
                 done();
             });
         });
-        
+
     });
 
     describe("DELETE /api/v1/book/:id", function () {
-        
+
         it("When request URL has valid ISBN, then response Status Code should be 200 OK", function (done) {
             request
             .delete("/api/v1/book/" + VALID_BOOK.isbn)

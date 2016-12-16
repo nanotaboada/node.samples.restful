@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var app = require('./app');
-var debug = require('debug')('node.samples.restful.tdd:server');
+var debug = require('debug')('node.samples.restful:server');
 var http = require('http');
 var port = normalizePort(process.env.PORT || '8888');
 

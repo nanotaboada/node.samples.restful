@@ -1,18 +1,27 @@
-var gulp = require("gulp"),
-    jshint = require("gulp-jshint"),
-    mocha = require("gulp-mocha");
+var gulp = require('gulp'),
+    jshint = require('gulp-jshint'),
+    mocha = require('gulp-mocha'),
+    istanbul = require('gulp-istanbul');
 
-gulp.task("lint", function () {
-    gulp.src("controllers/**/*.js")
+gulp.task('lint', function () {
+    gulp.src('controllers/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter());
 });
 
-gulp.task("test", function () {
-    return gulp.src("test/**/*.js", {read: false})
-    .pipe(mocha());
+gulp.task('cover', function () {
+  return gulp.src(['controllers/*.js'])
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire()); // Force `require` to return covered files
 });
 
-gulp.task("default", function() {
-    gulp.start("lint", "test");
+gulp.task('test', ['cover'], function () {
+    return gulp.src('test/*.js', { read: false })
+    .pipe(mocha())
+    .pipe(istanbul.writeReports())
+    .pipe(istanbul.enforceThresholds({ thresholds: { global: 80 } }));
+});
+
+gulp.task('default', function() {
+    gulp.start('lint', 'test');
 });

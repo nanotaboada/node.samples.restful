@@ -4,7 +4,7 @@
 		{
 			"name": "Test",
 			"type": "node",
-			"program": "/home/hernan/src/nanotaboada/node.samples.restful.tdd/node_modules/mocha/bin/_mocha",
+			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
 			"stopOnEntry": false,
 			"args": ["test/bookTests.js"],
 			"cwd": "${workspaceRoot}",
