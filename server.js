@@ -18,9 +18,9 @@ function normalizePort(value) {
         if (isNaN(port)) {
             return value; // Pipe
         }
-       if (port >= 0) {
-           return port; // Port
-      }
+        if (port >= 0) {
+            return port; // Port
+        }
     return false;
 }
 
@@ -28,11 +28,7 @@ function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
     }
-
-    var bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
-
+    var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
     switch (error.code) {
         case 'EACCES':
             console.error(bind + ' requires elevated privileges');
@@ -49,8 +45,6 @@ function onError(error) {
 
 function onListening() {
     var address = server.address();
-    var bind = typeof address === 'string'
-        ? 'pipe ' + address
-        : 'port ' + address.port;
-  debug('Listening on ' + bind);
+    var bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + address.port;
+    debug('Listening on ' + bind);
 }
