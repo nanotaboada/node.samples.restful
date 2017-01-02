@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     mocha = require('gulp-mocha'),
-    istanbul = require('gulp-istanbul');
+    istanbul = require('gulp-istanbul'),
+    codacy = require('gulp-codacy');
 
 gulp.task('lint', function () {
     gulp.src('controllers/**/*.js')
@@ -20,6 +21,15 @@ gulp.task('test', ['cover'], function () {
     .pipe(mocha())
     .pipe(istanbul.writeReports())
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 80 } }));
+});
+
+gulp.task('coverage', ['test'], function codacyTask() {
+  return gulp
+    .src(['coverage/lcov.info'], { read: false })
+    .pipe(codacy({
+      token: process.env.CODACY_PROJECT_TOKEN
+    }))
+  ;
 });
 
 gulp.task('default', function() {
