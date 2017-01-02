@@ -19,13 +19,16 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "codacy-coverage": "^2.0.0",
     "gulp": "^3.9.1",
+    "gulp-codacy": "^1.0.0",
     "gulp-istanbul": "^1.1.1",
     "gulp-jshint": "^2.0.1",
     "gulp-mocha": "^3.0.1",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.3",
     "mocha": "^3.0.2",
+    "mocha-lcov-reporter": "^1.2.0",
     "sinon": "^1.17.6",
     "sinon-mongoose": "^1.2.1",
     "supertest": "^2.0.0"
