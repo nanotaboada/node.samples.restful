@@ -36,6 +36,9 @@ describe("Book", function () {
             .post("/api/v1/book/")
             .end(function (error, response) {
                 expect(response.header["content-type"]).to.contain("application/json");
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -47,6 +50,9 @@ describe("Book", function () {
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(400);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -58,6 +64,9 @@ describe("Book", function () {
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(201);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -69,6 +78,9 @@ describe("Book", function () {
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(409);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -82,6 +94,9 @@ describe("Book", function () {
             .get("/api/v1/books")
             .end(function (error, response) {
                 expect(response.header["content-type"]).to.contain("application/json");
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -91,6 +106,9 @@ describe("Book", function () {
             .get("/api/v1/books")
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(200);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -100,6 +118,9 @@ describe("Book", function () {
             .get("/api/v1/books")
             .end(function (error, response) {
                 expect(response.body).to.be.an("array");
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -113,6 +134,9 @@ describe("Book", function () {
             .get("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
                 expect(response.header["content-type"]).to.contain("application/json");
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -122,6 +146,9 @@ describe("Book", function () {
             .get("/api/v1/book/" + INVALID_BOOK.isbn)
             .end(function (error, response) {
                 expect(response.status).to.equal(404);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -131,6 +158,9 @@ describe("Book", function () {
             .get("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
                 expect(response.status).to.equal(200);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -149,6 +179,9 @@ describe("Book", function () {
                 expect(response.body).to.have.property("pages");
                 expect(response.body).to.have.property("description");
                 expect(response.body).to.have.property("website");
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -162,6 +195,9 @@ describe("Book", function () {
             .put("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
                 expect(response.header["content-type"]).to.contain("application/json");
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -173,6 +209,9 @@ describe("Book", function () {
             .send(body)
             .end(function (error, response) {
                 expect(response.status).to.equal(404);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -184,6 +223,9 @@ describe("Book", function () {
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(400);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -196,6 +238,9 @@ describe("Book", function () {
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(200);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
@@ -209,6 +254,9 @@ describe("Book", function () {
             .delete("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
                 expect(response.status).to.equal(200);
+                if (error) {
+                    return done(error);
+                }
                 done();
             });
         });
