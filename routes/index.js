@@ -4,10 +4,15 @@ var bookController = require("../controllers/bookController.js"),
     express = require("express"),
     router = express.Router();
 
-// Book
+// INFO: Using HTTP Methods for RESTful Services
+// http://www.restapitutorial.com/lessons/httpmethods.html
+
+// Entire Collection
 router.get("/api/v1/books", bookController.getAll);
+router.post("/api/v1/books", bookController.post);
+
+// Specific Item
 router.get("/api/v1/book/:id", bookController.get);
-router.post("/api/v1/book/", bookController.post);
 router.put("/api/v1/book/:id", bookController.put);
 router.delete("/api/v1/book/:id", bookController.delete);
 

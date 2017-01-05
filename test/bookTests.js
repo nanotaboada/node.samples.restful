@@ -29,24 +29,15 @@ var INVALID_BOOK = {
 
 describe("Book", function () {
 
-    describe("POST /api/v1/book", function () {
+    /* POST /api/v1/books
+    ------------------------------------------------------------------------- */
 
-        it("When request then response Content Type should be \"application/json\"", function (done) {
-            request
-            .post("/api/v1/book/")
-            .end(function (error, response) {
-                expect(response.header["content-type"]).to.contain("application/json");
-                if (error) {
-                    return done(error);
-                }
-                done();
-            });
-        });
+    describe("POST /api/v1/books", function () {
 
-        it("When request payload is empty, then response Status Code should be 400 Bad Request", function(done) {
+        it("When request body is empty, then response status code should be 400 (Bad Request)", function(done) {
             var body = [];
             request
-            .post("/api/v1/book/")
+            .post("/api/v1/books")
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(400);
@@ -57,10 +48,10 @@ describe("Book", function () {
             });
         });
 
-        it("When request payload is a valid Book, then response Status Code should be 201 Created", function(done) {
+        it("When request body is valid Book, then response status code should be 201 (Created)", function(done) {
             var body = VALID_BOOK;
             request
-            .post("/api/v1/book/")
+            .post("/api/v1/books")
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(201);
@@ -71,10 +62,10 @@ describe("Book", function () {
             });
         });
 
-        it("When request payload is a valid but already existing Book, then response Status Code should be 409 Conflict", function(done) {
+        it("When request body is valid but already existing Book, then response status code should be 409 (Conflict)", function(done) {
             var body = VALID_BOOK;
             request
-            .post("/api/v1/book/")
+            .post("/api/v1/books")
             .send(body)
             .end(function (error, response) {
                 expect(response.statusCode).to.equal(409);
@@ -87,21 +78,12 @@ describe("Book", function () {
 
     });
 
+    /* GET /api/v1/books
+    ------------------------------------------------------------------------- */
+
     describe("GET /api/v1/books", function () {
 
-        it("When request then response Content Type should be \"application/json\"", function (done) {
-            request
-            .get("/api/v1/books")
-            .end(function (error, response) {
-                expect(response.header["content-type"]).to.contain("application/json");
-                if (error) {
-                    return done(error);
-                }
-                done();
-            });
-        });
-
-        it("When request then response Status Code should be 200 OK", function(done) {
+        it("When request with no parameters, then response status code should be 200 (OK)", function(done) {
             request
             .get("/api/v1/books")
             .end(function (error, response) {
@@ -113,7 +95,7 @@ describe("Book", function () {
             });
         });
 
-        it("When request then response body should be an Array of Books", function (done) {
+        it("When request with no parameters, then response body should be an Array of Books", function (done) {
             request
             .get("/api/v1/books")
             .end(function (error, response) {
@@ -126,22 +108,12 @@ describe("Book", function () {
         });
     });
 
+    /* GET /api/v1/book:id
+    ------------------------------------------------------------------------- */
 
-    describe("GET /api/v1/book/:id", function () {
+    describe("GET /api/v1/book:id", function () {
 
-        it("When request then response Content Type should be \"application/json\"", function (done) {
-            request
-            .get("/api/v1/book/" + VALID_BOOK.isbn)
-            .end(function (error, response) {
-                expect(response.header["content-type"]).to.contain("application/json");
-                if (error) {
-                    return done(error);
-                }
-                done();
-            });
-        });
-
-        it("When request parameter is an invalid ISBN, then response Status Code should be 404 Not Found", function(done) {
+        it("When request parameter is invalid ISBN, then response status code should be 404 (Not Found)", function(done) {
             request
             .get("/api/v1/book/" + INVALID_BOOK.isbn)
             .end(function (error, response) {
@@ -153,7 +125,7 @@ describe("Book", function () {
             });
         });
 
-       it("When request parameter is a valid ISBN, then response Status Code should be 200 OK", function(done) {
+       it("When request parameter is valid ISBN, then response status code should be 200 (OK)", function(done) {
             request
             .get("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
@@ -165,7 +137,7 @@ describe("Book", function () {
             });
         });
 
-       it("When request parameter is a valid ISBN, then response payload should be a Book", function(done) {
+       it("When request parameter is valid ISBN, then response body should be a Book", function(done) {
             request
             .get("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
@@ -174,8 +146,8 @@ describe("Book", function () {
                 expect(response.body).to.have.property("title");
                 expect(response.body).to.have.property("subtitle");
                 expect(response.body).to.have.property("author");
-                expect(response.body).to.have.property("publisher");
                 expect(response.body).to.have.property("published");
+                expect(response.body).to.have.property("publisher");
                 expect(response.body).to.have.property("pages");
                 expect(response.body).to.have.property("description");
                 expect(response.body).to.have.property("website");
@@ -188,21 +160,12 @@ describe("Book", function () {
 
     });
 
+    /* PUT /api/v1/book/:id
+    ------------------------------------------------------------------------- */
+
     describe("PUT /api/v1/book/:id", function () {
 
-        it("When request then response Content Type should be \"application/json\"", function (done) {
-            request
-            .put("/api/v1/book/" + VALID_BOOK.isbn)
-            .end(function (error, response) {
-                expect(response.header["content-type"]).to.contain("application/json");
-                if (error) {
-                    return done(error);
-                }
-                done();
-            });
-        });
-
-        it("When request parameter is an invalid ISBN, then response Status Code should be 404 Not Found", function(done) {
+        it("When request parameter is invalid ISBN, then response status code should be 404 (Not Found)", function(done) {
             var body = VALID_BOOK;
             request
             .put("/api/v1/book/" + INVALID_BOOK.isbn)
@@ -216,7 +179,7 @@ describe("Book", function () {
             });
         });
 
-        it("When request payload is empty, then response Status Code should be 400 Bad Request", function(done) {
+        it("When request parameter is valid ISBN but body is empty, then response status code should be 400 (Bad Request)", function(done) {
             var body = [];
             request
             .put("/api/v1/book/" + VALID_BOOK.isbn)
@@ -230,14 +193,14 @@ describe("Book", function () {
             });
         });
 
-        it("When request payload is a valid Book, then response Status Code should be 200 OK", function(done) {
+        it("When request parameter is valid ISBN and body is valid Book, then response status code should be 204 (No Content)", function(done) {
             var body = VALID_BOOK;
             body.description = VALID_BOOK_UPDATED_DESCRIPTION;
             request
             .put("/api/v1/book/" + VALID_BOOK.isbn)
             .send(body)
             .end(function (error, response) {
-                expect(response.statusCode).to.equal(200);
+                expect(response.statusCode).to.equal(204);
                 if (error) {
                     return done(error);
                 }
@@ -247,13 +210,16 @@ describe("Book", function () {
 
     });
 
+    /* DELETE /api/v1/book/:id
+    ------------------------------------------------------------------------- */
+
     describe("DELETE /api/v1/book/:id", function () {
 
-        it("When request parameter is a valid ISBN, then response Status Code should be 200 OK", function (done) {
+        it("When request parameter is valid ISBN, then response status code should be 204 (No Content)", function (done) {
             request
             .delete("/api/v1/book/" + VALID_BOOK.isbn)
             .end(function (error, response) {
-                expect(response.status).to.equal(200);
+                expect(response.status).to.equal(204);
                 if (error) {
                     return done(error);
                 }
