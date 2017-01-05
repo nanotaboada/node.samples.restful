@@ -2,37 +2,87 @@
 
 // TODO: Dependency Injection
 // https://blog.risingstack.com/dependency-injection-in-node-js/
+var sqlite3 = require("sqlite3").verbose();
+var db = new sqlite3.Database(__dirname + "/books.sqlite3");
 
-// https://github.com/typicode/lowdb
-var low = require("lowdb");
-
-// persisted using async file storage
-// var db = low(__dirname + "/books.db", { storage: require("lowdb/lib/file-async") });
-
-// in-memory
-var db = low();
-db.defaults({ books: require(__dirname + "/books.js") }).value();
+var statements = {
+    CREATE : "INSERT INTO Books (isbn, title, subtitle, author, published, publisher, pages, description, website) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    READ : "SELECT * FROM Books WHERE isbn = ?",
+    READ_ALL : "SELECT * FROM Books",
+    UPDATE : "UPDATE Books SET title = ?, subtitle = ?, author = ?, published = ?, publisher = ?, pages = ?, description = ?, website = ? WHERE isbn = ?",
+    DELETE : "DELETE FROM Books WHERE isbn = ?"
+};
 
 var bookModel = {
 
-    create: function (book) {
-        return db.get("books").push(book).value();
+    create: function (book, callback) {
+        db.run(statements.CREATE, [
+            book.isbn,
+            book.title,
+            book.subtitle,
+            book.author,
+            book.published,
+            book.publisher,
+            book.pages,
+            book.description,
+            book.website
+        ], function(error) {
+            if (error) {
+                callback(error);
+            } else {
+                callback(null);
+            }
+        });
     },
 
-    read: function (isbn) {
-        return db.get("books").find({ isbn: isbn }).value();
+    read: function (isbn, callback) {
+        db.get(statements.READ, isbn, function(error, result) {
+            if (error) {
+                callback(error);
+            } else {
+                callback(null, result);
+            }
+        });
     },
 
-    readAll: function () {
-        return db.get("books").value();
+    readAll: function (callback) {
+        db.all(statements.READ_ALL, function(error, results) {
+            if (error) {
+                callback(error);
+            } else {
+                callback(null, results);
+            }
+        });
     },
 
-    update: function (updated, existing) {
-        db.get("books").chain().find({ isbn: existing.isbn }).assign(updated).value();
+    update: function (book, callback) {
+        db.run(statements.UPDATE, [
+            book.title,
+            book.subtitle,
+            book.author,
+            book.published,
+            book.publisher,
+            book.pages,
+            book.description,
+            book.website,
+            book.isbn
+        ], function(error) {
+            if (error) {
+                callback(error);
+            } else {
+                callback(null);
+            }
+        });
     },
 
-    delete: function (isbn) {
-        db.get("books").remove({ isbn: isbn }).value();
+    delete: function (isbn, callback) {
+        db.run(statements.DELETE, isbn, function(error) {
+            if (error) {
+                callback(error);
+            } else {
+                callback(null);
+            }
+        });
     }
 
 };

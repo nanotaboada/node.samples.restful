@@ -8,6 +8,7 @@
     "test": "make test"
   },
   "dependencies": {
+    "bluebird": "^3.4.7",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.7.1",
@@ -15,7 +16,8 @@
     "express": "^4.14.0",
     "lodash": "^4.15.0",
     "lowdb": "^0.14.0",
-    "method-override": "^2.3.6"
+    "method-override": "^2.3.6",
+    "sqlite": "^2.2.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
