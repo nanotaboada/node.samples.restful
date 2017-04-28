@@ -15,12 +15,12 @@ server.on('listening', onListening);
 
 function normalizePort(value) {
     var port = parseInt(value, 10);
-        if (isNaN(port)) {
-            return value; // Pipe
-        }
-        if (port >= 0) {
-            return port; // Port
-        }
+    if (isNaN(port)) {
+        return value; // Pipe
+    }
+    if (port >= 0) {
+        return port; // Port
+    }
     return false;
 }
 

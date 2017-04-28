@@ -35,14 +35,14 @@ app.use(function(request, response, next) {
 if (app.get('env') === 'development') {
     app.use(function(error, request, response) {
         response.status(error.status || 500);
-        response.json( { message: error.message, error: error } );
+        response.json({ message: error.message, error: error });
     });
 }
 
 // Production
 app.use(function(error, request, response) {
     response.status(error.status || 500);
-    response.json( { message: error.message, error: {} } );
+    response.json({ message: error.message, error: {} });
 });
 
 module.exports = app;
