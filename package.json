@@ -1,46 +1,47 @@
 {
-  "name": "node.samples.restful",
-  "version": "1.0.0",
-  "description": "Proof of Concept for a RESTFul API made with Node.js",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "make test"
-  },
-  "dependencies": {
-    "body-parser": "^1.15.1",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.7.1",
-    "debug": "^2.4.4",
-    "express": "^4.14.0",
-    "lodash": "^4.15.0",
-    "lowdb": "^0.14.0",
-    "method-override": "^2.3.6"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "codacy-coverage": "^2.0.0",
-    "gulp": "^3.9.1",
-    "gulp-codacy": "^1.0.0",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-jshint": "^2.0.1",
-    "gulp-mocha": "^3.0.1",
-    "istanbul": "^0.4.5",
-    "jshint": "^2.9.3",
-    "mocha": "^3.0.2",
-    "mocha-lcov-reporter": "^1.2.0",
-    "sinon": "^1.17.6",
-    "sinon-mongoose": "^1.2.1",
-    "supertest": "^2.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nanotaboada/node.samples.restful.git"
-  },
-  "author": "Nano Taboada <nanotaboada@msn.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nanotaboada/node.samples.restful/issues"
-  },
-  "homepage": "https://github.com/nanotaboada/node.samples.restful#readme"
+    "name": "node.samples.restful",
+    "version": "1.0.0",
+    "description": "Proof of Concept for a RESTFul API made with Node.js",
+    "main": "index.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "make test"
+    },
+    "dependencies": {
+        "body-parser": "^1.15.1",
+        "cookie-parser": "^1.4.3",
+        "cors": "^2.7.1",
+        "debug": "^2.4.4",
+        "express": "^4.14.0",
+        "lodash": "^4.15.0",
+        "lowdb": "^0.14.0",
+        "method-override": "^2.3.6",
+        "pg-promise": "^5.6.7"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "codacy-coverage": "^2.0.0",
+        "gulp": "^3.9.1",
+        "gulp-codacy": "^1.0.0",
+        "gulp-istanbul": "^1.1.1",
+        "gulp-jshint": "^2.0.1",
+        "gulp-mocha": "^3.0.1",
+        "istanbul": "^0.4.5",
+        "jshint": "^2.9.3",
+        "mocha": "^3.0.2",
+        "mocha-lcov-reporter": "^1.2.0",
+        "sinon": "^1.17.6",
+        "sinon-mongoose": "^1.2.1",
+        "supertest": "^2.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nanotaboada/node.samples.restful.git"
+    },
+    "author": "Nano Taboada <nanotaboada@msn.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nanotaboada/node.samples.restful/issues"
+    },
+    "homepage": "https://github.com/nanotaboada/node.samples.restful#readme"
 }

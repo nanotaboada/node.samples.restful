@@ -1,38 +1,45 @@
 /*jslint unparam: true, node: true */
 
-// TODO: Dependency Injection
-// https://blog.risingstack.com/dependency-injection-in-node-js/
+var pgp = require('pg-promise')();
+var connection = process.env.DATABASE_URL || 'postgres:///catalog';
+var db = pgp(connection);
 
-// https://github.com/typicode/lowdb
-var low = require("lowdb");
-
-// persisted using async file storage
-// var db = low(__dirname + "/books.db", { storage: require("lowdb/lib/file-async") });
-
-// in-memory
-var db = low();
-db.defaults({ books: require(__dirname + "/books.js") }).value();
+var statements = {
+    CREATE: "INSERT INTO Books (isbn, title, subtitle, author, published, publisher, pages, description, website) VALUES (${isbn}, ${title}, ${subtitle}, ${author}, ${published}, ${publisher}, ${pages}, ${description}, ${website}) RETURNING isbn",
+    READ: "SELECT * FROM Books WHERE isbn = $1",
+    READ_ALL: "SELECT * FROM Books",
+    UPDATE: "UPDATE Books SET title = ${title}, subtitle = ${subtitle}, author = ${author}, published = ${published}, publisher = ${publisher}, pages = ${pages}, description = ${description}, website = ${website} WHERE isbn = ${isbn}",
+};
 
 var bookModel = {
 
-    create: function (book) {
-        return db.get("books").push(book).value();
+    create: function(book, results) {
+        db.one(statements.CREATE, book)
+            .then(function(book) {
+                results(book.isbn);
+            });
     },
 
-    read: function (isbn) {
-        return db.get("books").find({ isbn: isbn }).value();
+    read: function(isbn, results) {
+        db.oneOrNone(statements.READ, isbn)
+            .then(function(book) {
+                results(book);
+            });
     },
 
-    readAll: function () {
-        return db.get("books").value();
+    readAll: function(results) {
+        db.any(statements.READ_ALL)
+            .then(function(books) {
+                results(books);
+            });
     },
 
-    update: function (updated, existing) {
-        db.get("books").chain().find({ isbn: existing.isbn }).assign(updated).value();
+    update: function(book, results) {
+        // TODO
     },
 
-    delete: function (isbn) {
-        db.get("books").remove({ isbn: isbn }).value();
+    delete: function(isbn, callback) {
+        // TODO
     }
 
 };
