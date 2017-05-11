@@ -19,7 +19,7 @@ var INVALID_BOOK = {
         title: "Programming JavaScript Applications",
         subtitle: "Robust Web Architecture with Node, HTML5, and Modern JS Libraries",
         author: "Eric Elliott",
-        published: "2014-07-01T00:00:00.000Z",
+        published: "2014-07-20T00:00:00.000Z",
         publisher: "O'Reilly Media",
         pages: 254,
         description: "Take advantage of JavaScript's power to build robust web-scale or enterprise applications that are easy to extend and maintain. By applying the design patterns outlined in this practical book, experienced JavaScript developers will learn how to write flexible and resilient code that's easier-yes, easier-to work with as your code base grows.",
