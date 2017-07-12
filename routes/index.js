@@ -12,8 +12,8 @@ router.get("/api/v1/books", bookController.getAll);
 router.post("/api/v1/books", bookController.post);
 
 // Specific Item
-router.get("/api/v1/book/:id", bookController.get);
-router.put("/api/v1/book/:id", bookController.put);
-router.delete("/api/v1/book/:id", bookController.delete);
+router.get("/api/v1/books/:id", bookController.get);
+router.put("/api/v1/books/:id", bookController.put);
+router.delete("/api/v1/books/:id", bookController.delete);
 
 module.exports = router;

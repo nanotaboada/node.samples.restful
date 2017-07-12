@@ -108,14 +108,14 @@ describe("Book", function() {
         });
     });
 
-    /* GET /api/v1/book:id
+    /* GET /api/v1/books/:id
     ------------------------------------------------------------------------- */
 
-    describe("GET /api/v1/book:id", function() {
+    describe("GET /api/v1/books/:id", function() {
 
         it("When request parameter is invalid ISBN, then response status code should be 404 (Not Found)", function(done) {
             request
-                .get("/api/v1/book/" + INVALID_BOOK.isbn)
+                .get("/api/v1/books/" + INVALID_BOOK.isbn)
                 .end(function(error, response) {
                     expect(response.statusCode).to.equal(404);
                     if (error) {
@@ -127,7 +127,7 @@ describe("Book", function() {
 
         it("When request parameter is valid ISBN, then response status code should be 200 (OK)", function(done) {
             request
-                .get("/api/v1/book/" + VALID_BOOK.isbn)
+                .get("/api/v1/books/" + VALID_BOOK.isbn)
                 .end(function(error, response) {
                     expect(response.statusCode).to.equal(200);
                     if (error) {
@@ -139,7 +139,7 @@ describe("Book", function() {
 
         it("When request parameter is valid ISBN, then response body should be a Book", function(done) {
             request
-                .get("/api/v1/book/" + VALID_BOOK.isbn)
+                .get("/api/v1/books/" + VALID_BOOK.isbn)
                 .end(function(error, response) {
                     expect(response.body).to.be.an("object");
                     expect(response.body).to.have.property("isbn");
@@ -160,15 +160,15 @@ describe("Book", function() {
 
     });
 
-    /* PUT /api/v1/book/:id
+    /* PUT /api/v1/books/:id
     ------------------------------------------------------------------------- */
 
-    describe("PUT /api/v1/book/:id", function() {
+    describe("PUT /api/v1/books/:id", function() {
 
         it("When request parameter is invalid ISBN, then response status code should be 404 (Not Found)", function(done) {
             var body = VALID_BOOK;
             request
-                .put("/api/v1/book/" + INVALID_BOOK.isbn)
+                .put("/api/v1/books/" + INVALID_BOOK.isbn)
                 .send(body)
                 .end(function(error, response) {
                     expect(response.statusCode).to.equal(404);
@@ -182,7 +182,7 @@ describe("Book", function() {
         it("When request parameter is valid ISBN but body is empty, then response status code should be 400 (Bad Request)", function(done) {
             var body = [];
             request
-                .put("/api/v1/book/" + VALID_BOOK.isbn)
+                .put("/api/v1/books/" + VALID_BOOK.isbn)
                 .send(body)
                 .end(function(error, response) {
                     expect(response.statusCode).to.equal(400);
@@ -197,7 +197,7 @@ describe("Book", function() {
             var body = VALID_BOOK;
             body.description = VALID_BOOK_UPDATED_DESCRIPTION;
             request
-                .put("/api/v1/book/" + VALID_BOOK.isbn)
+                .put("/api/v1/books/" + VALID_BOOK.isbn)
                 .send(body)
                 .end(function(error, response) {
                     expect(response.statusCode).to.equal(204);
@@ -210,14 +210,14 @@ describe("Book", function() {
 
     });
 
-    /* DELETE /api/v1/book/:id
+    /* DELETE /api/v1/books/:id
     ------------------------------------------------------------------------- */
 
-    describe("DELETE /api/v1/book/:id", function() {
+    describe("DELETE /api/v1/books/:id", function() {
 
         it("When request parameter is valid ISBN, then response status code should be 204 (No Content)", function(done) {
             request
-                .delete("/api/v1/book/" + VALID_BOOK.isbn)
+                .delete("/api/v1/books/" + VALID_BOOK.isbn)
                 .end(function(error, response) {
                     expect(response.statusCode).to.equal(204);
                     if (error) {
