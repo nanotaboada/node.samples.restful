@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "make test"
+    "test": "make test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -15,7 +17,8 @@
     "express": "^4.15.3",
     "lodash": "^4.17.4",
     "lowdb": "^0.16.2",
-    "method-override": "^2.3.9"
+    "method-override": "^2.3.9",
+    "snyk": "^1.41.1"
   },
   "devDependencies": {
     "chai": "^4.1.0",
@@ -41,5 +44,6 @@
   "bugs": {
     "url": "https://github.com/nanotaboada/node.samples.restful/issues"
   },
-  "homepage": "https://github.com/nanotaboada/node.samples.restful#readme"
+  "homepage": "https://github.com/nanotaboada/node.samples.restful#readme",
+  "snyk": true
 }
