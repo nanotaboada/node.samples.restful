@@ -1,7 +1,7 @@
 Status
 ------
 [![CircleCI](https://circleci.com/gh/nanotaboada/node.samples.restful/tree/master.svg?style=shield)](https://circleci.com/gh/nanotaboada/node.samples.restful/tree/master)
-[![Codacy Badge](https://www.codacy.com/project/badge/8a53f27ab85e4fbe91c34de834d16e3a)](https://www.codacy.com/app/nanotaboada/node-samples-restful)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8a53f27ab85e4fbe91c34de834d16e3a)](https://www.codacy.com/app/nanotaboada/node-samples-restful?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nanotaboada/node.samples.restful&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/8a53f27ab85e4fbe91c34de834d16e3a)](https://www.codacy.com/app/nanotaboada/node-samples-restful?utm_source=github.com&utm_medium=referral&utm_content=nanotaboada/node.samples.restful&utm_campaign=Badge_Coverage)
 [![Code Climate](https://codeclimate.com/github/nanotaboada/node.samples.restful/badges/gpa.svg)](https://codeclimate.com/github/nanotaboada/node.samples.restful)
 [![bitHound Code](https://www.bithound.io/github/nanotaboada/node.samples.restful/badges/code.svg)](https://www.bithound.io/github/nanotaboada/node.samples.restful)
